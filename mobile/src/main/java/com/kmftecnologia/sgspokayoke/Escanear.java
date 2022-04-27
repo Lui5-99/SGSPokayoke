@@ -255,9 +255,14 @@ public class Escanear extends AppCompatActivity {
 
     private void ValidaEscaneo(){
         try {
+            String regex = "";
             String sCodigo = oTexto.getText().toString().trim();
             String sCharola = otxtCharola.getText().toString().trim();
-            String aCharola[] = sCharola.split(":");
+            if(sCharola.contains(":"))
+                regex = ":";
+            else if(sCharola.contains("-"))
+                regex = "-";
+            String aCharola[] = sCharola.split(regex);
             sCharola = aCharola[0].toString();
             int IConsecutivo = Integer.parseInt(aCharola[1].toString());
             int iIdTarimaActiva = 0;
