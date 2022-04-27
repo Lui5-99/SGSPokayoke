@@ -1,6 +1,7 @@
 package com.kmftecnologia.sgspokayoke;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Environment;
@@ -31,17 +32,18 @@ public class Retraso extends AppCompatActivity {
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retraso);
-        etNumRetraso = findViewById(R.id.btRetraso);
+        etNumRetraso = findViewById(R.id.etNumRetraso);
         int PERMISSION = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if(PERMISSION != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, PERMISSIONS_STORAGE, REQUEST_EXTERNAL_STORAGE);
         }
     }
-    private void onClickAceptar(View v) throws IOException {
+    public void onClickAceptar(View v){
         //File file = new File(Environment.getExternalStorageDirectory() + "/KMF/" , "delay.txt");
         crearTxt();
     }
