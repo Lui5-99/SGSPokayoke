@@ -1,8 +1,8 @@
 package com.kmftecnologia.sgspokayoke;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,21 +12,24 @@ import dbOperacion.cGlobales;
 public class Configuracion extends AppCompatActivity {
     Button oNP;
     Button oSuper;
-
+    Button btRetraso;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracion);
         oNP = findViewById(R.id.cmdCatalogo);
         oSuper = findViewById(R.id.cmdSupervisores);
+        btRetraso = findViewById(R.id.btRetraso);
         boolean bIsSuper = cGlobales.getInstance().getIsSuper();
         if(bIsSuper){
             oNP.setVisibility(View.VISIBLE);
             oSuper.setVisibility(View.VISIBLE);
+            btRetraso.setVisibility(View.VISIBLE);
         }else
         {
             oNP.setVisibility(View.INVISIBLE);
             oSuper.setVisibility(View.INVISIBLE);
+            btRetraso.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -80,6 +83,17 @@ public class Configuracion extends AppCompatActivity {
             Intent intent = new Intent(this,GeneraEtiqueta.class);
             startActivity(intent);
         }catch(Exception ex){
+            TextView oError = (TextView) findViewById(R.id.lblError);
+            oError.setVisibility(View.VISIBLE);
+            oError.setText(ex.getMessage());
+        }
+    }
+    public void onClickRetraso(View v){
+        try{
+            Intent intent = new Intent(this,Retraso.class);
+            startActivity(intent);
+        }
+        catch(Exception ex){
             TextView oError = (TextView) findViewById(R.id.lblError);
             oError.setVisibility(View.VISIBLE);
             oError.setText(ex.getMessage());

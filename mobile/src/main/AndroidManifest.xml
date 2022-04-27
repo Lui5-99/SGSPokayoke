@@ -19,6 +19,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".Retraso"
+            android:exported="false" />
         <activity android:name=".Users">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -69,11 +72,13 @@
         <activity android:name=".Test2" />
         <activity android:name=".GeneraEtiqueta" />
         <activity android:name=".TarimaPerdida" />
-        <activity android:name=".Supervisores"
-            android:parentActivityName=".Configuracion" />/>
-        <activity android:name=".NewSuper"
+        <activity
+            android:name=".Supervisores"
+            android:parentActivityName=".Configuracion" />
+        <activity
+            android:name=".NewSuper"
             android:parentActivityName=".Supervisores" />
-        <activity android:name=".Catalogos"></activity>
+        <activity android:name=".Catalogos" />
     </application>
 
 </manifest>
