@@ -35,7 +35,7 @@ import dbOperacion.ctNumerosParte;
 import static android.view.View.FOCUS_DOWN;
 import static android.view.View.FOCUS_UP;
 
-public class Escanear extends AppCompatActivity {
+public class Escanear extends AppCompatActivity implements AuthDialog.DatosCuadroDialogo {
     TextView oError ;
     EditText oTexto ;
     EditText otxtCharola ;
@@ -290,12 +290,8 @@ public class Escanear extends AppCompatActivity {
                 }
             }
             else{
-                oResultado.setBackgroundResource(R.color.Rojo);
-                oResultado.setText("Error");
-                oTexto.setText("");
-                otxtCharola.setText("");
-                oTarima.setText("");
-
+                AuthDialog dialog = new AuthDialog();
+                dialog.CuadradoDialogo(this, Escanear.this);
             }
         }catch (Exception ex){
             oError.setText(ex.getMessage());
@@ -443,5 +439,10 @@ public class Escanear extends AppCompatActivity {
             otxtCharola.setText("");
             oTexto.setText("");
         }
+    }
+
+    @Override
+    public void resultadoCuadroDialogo(String user) {
+        Toast.makeText(this, user, Toast.LENGTH_LONG).show();
     }
 }

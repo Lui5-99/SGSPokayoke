@@ -5,6 +5,22 @@
       <map>
         <entry key="..\:/KMF/SGSPokayoke/mobile/src/main/res/layout/activity_configuracion.xml" value="0.264" />
         <entry key="..\:/KMF/SGSPokayoke/mobile/src/main/res/layout/activity_retraso.xml" value="0.11614583333333334" />
+        <entry key="..\:/Users/marwe/AndroidStudioProjects/SGSPokayoke/mobile/src/main/res/layout/activity_authdialog.xml" value="0.2" />
+        <entry key="..\:/Users/marwe/AndroidStudioProjects/SGSPokayoke/mobile/src/main/res/layout/activity_catalogo.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/marwe/AndroidStudioProjects/SGSPokayoke/mobile/src/main/res/layout/activity_catalogos.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/marwe/AndroidStudioProjects/SGSPokayoke/mobile/src/main/res/layout/activity_cierre_tarima.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/marwe/AndroidStudioProjects/SGSPokayoke/mobile/src/main/res/layout/activity_embarcar.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/marwe/AndroidStudioProjects/SGSPokayoke/mobile/src/main/res/layout/activity_escanear.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/marwe/AndroidStudioProjects/SGSPokayoke/mobile/src/main/res/layout/activity_new_pallet.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/marwe/AndroidStudioProjects/SGSPokayoke/mobile/src/main/res/layout/activity_new_super.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/marwe/AndroidStudioProjects/SGSPokayoke/mobile/src/main/res/layout/activity_nuevo_np.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/marwe/AndroidStudioProjects/SGSPokayoke/mobile/src/main/res/layout/activity_principal.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/marwe/AndroidStudioProjects/SGSPokayoke/mobile/src/main/res/layout/activity_retraso.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/marwe/AndroidStudioProjects/SGSPokayoke/mobile/src/main/res/layout/activity_scrap.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/marwe/AndroidStudioProjects/SGSPokayoke/mobile/src/main/res/layout/activity_supervisores.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/marwe/AndroidStudioProjects/SGSPokayoke/mobile/src/main/res/layout/activity_tarima_charola.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/marwe/AndroidStudioProjects/SGSPokayoke/mobile/src/main/res/layout/activity_tarima_parcial.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/marwe/AndroidStudioProjects/SGSPokayoke/mobile/src/main/res/layout/activity_tarima_perdida.xml" value="0.22826086956521738" />
       </map>
     </option>
   </component>
