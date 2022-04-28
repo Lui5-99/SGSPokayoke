@@ -1,6 +1,7 @@
 package com.kmftecnologia.sgspokayoke;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -49,7 +50,8 @@ public class Escanear extends AppCompatActivity implements AuthDialog.DatosCuadr
     String sUsuario;
     String IdNombreTarima;
     int ContadorPiezasTarima;
-
+    ProgressDialog progressBar;
+    private int progressBarStatus = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -253,9 +255,14 @@ public class Escanear extends AppCompatActivity implements AuthDialog.DatosCuadr
 
     private void ValidaEscaneo(){
         try {
+            String regex = "";
             String sCodigo = oTexto.getText().toString().trim();
             String sCharola = otxtCharola.getText().toString().trim();
-            String aCharola[] = sCharola.split(":");
+            if(sCharola.contains(":"))
+                regex = ":";
+            else if(sCharola.contains("-"))
+                regex = "-";
+            String aCharola[] = sCharola.split(regex);
             sCharola = aCharola[0].toString();
             int IConsecutivo = Integer.parseInt(aCharola[1].toString());
             int iIdTarimaActiva = 0;
@@ -278,6 +285,30 @@ public class Escanear extends AppCompatActivity implements AuthDialog.DatosCuadr
                     {
                         cGlobales.getInstance().setLastNP(sCodigo);
                         ActualizaTarima(iIdTarimaActiva, sCodigo, IConsecutivo);
+                        progressBar = new ProgressDialog(this);
+                        progressBar.setCancelable(false);
+                        progressBar.setTitle("Escaneando");
+                        progressBar.setMessage("Cargando...");
+                        progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                        progressBar.setProgress(0);
+                        progressBar.setMax(100);
+                        progressBar.show();
+
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try{
+                                    while(progressBar.getProgress() <= progressBar.getMax()){
+                                        Thread.sleep(200);
+                                        if(progressBar.getProgress() == progressBar.getMax()){
+                                            progressBar.dismiss();
+                                        }
+                                    }
+                                }catch(Exception e){
+                                    e.printStackTrace();
+                                }
+                            }
+                        }).start();
                     }else
                     {
                         oError.setText("La charola no pertenece a la tarima!");
