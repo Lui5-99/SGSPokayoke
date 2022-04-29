@@ -338,18 +338,12 @@ public class Escanear extends AppCompatActivity implements AuthDialog.DatosCuadr
                         }).start();
                     }else
                     {
-                        oError.setText("La charola no pertenece a la tarima!");
-                        oResultado.setText("La charola no pertenece a la tarima!");
-                        oResultado.setBackgroundResource(R.color.Rojo);
-                        oTexto.setText("");
-                        otxtCharola.setText("");
-                        oTarima.setText("");
+                        openAuthDialog();
                     }
                 }
             }
             else{
-                AuthDialog dialog = new AuthDialog();
-                dialog.CuadradoDialogo(this, Escanear.this);
+                openAuthDialog();
             }
         }catch (Exception ex){
             oError.setText(ex.getMessage());
@@ -503,6 +497,7 @@ public class Escanear extends AppCompatActivity implements AuthDialog.DatosCuadr
     public void resultadoCuadroDialogo(String user) {
         Toast.makeText(this, user, Toast.LENGTH_LONG).show();
     }
+
     private boolean fileExist(String[] archivos,String name){
         for (int f = 0; f < archivos.length; f++)
             if (name.equals(archivos[f]))
@@ -521,5 +516,12 @@ public class Escanear extends AppCompatActivity implements AuthDialog.DatosCuadr
             Num = 10;
         }
         return Num;
+    }
+
+    private void openAuthDialog() {
+        otxtCharola.setText("");
+        oTexto.setText("");
+        AuthDialog dialog = new AuthDialog();
+        dialog.CuadradoDialogo(this, Escanear.this);
     }
 }
