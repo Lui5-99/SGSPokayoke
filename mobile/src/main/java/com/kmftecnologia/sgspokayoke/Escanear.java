@@ -5,6 +5,9 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -17,7 +20,12 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -51,11 +59,15 @@ public class Escanear extends AppCompatActivity implements AuthDialog.DatosCuadr
     String IdNombreTarima;
     int ContadorPiezasTarima;
     ProgressDialog progressBar;
+    boolean isFile = false;
     private int progressBarStatus = 0;
+    String archivos[];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_escanear);
+        archivos = fileList();
+        isFile = fileExist(archivos, "delay.txt");
         oError = (TextView)findViewById(R.id.lbleError);
         oTexto = (EditText)findViewById(R.id.txtCodEscan);
         otxtCharola = (EditText)findViewById(R.id.txteCharola);
@@ -294,12 +306,27 @@ public class Escanear extends AppCompatActivity implements AuthDialog.DatosCuadr
                         progressBar.setMax(100);
                         progressBar.show();
 
+                        Handler hand = new Handler(){
+                            @Override
+                            public void handleMessage(Message msg) {
+                                super.handleMessage(msg);
+                                progressBar.incrementProgressBy(2);
+                            }
+                        };
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
                                 try{
+                                    float numDelay = 0;
+                                    if(isFile)
+                                        numDelay = readTXT();
+                                    else
+                                        numDelay = 10;
+                                    float segundos = numDelay / 50;
+                                    float Milisegundos = segundos * 1000;
                                     while(progressBar.getProgress() <= progressBar.getMax()){
-                                        Thread.sleep(200);
+                                        Thread.sleep((long) Milisegundos);
+                                        hand.sendMessage(hand.obtainMessage());
                                         if(progressBar.getProgress() == progressBar.getMax()){
                                             progressBar.dismiss();
                                         }
@@ -475,5 +502,24 @@ public class Escanear extends AppCompatActivity implements AuthDialog.DatosCuadr
     @Override
     public void resultadoCuadroDialogo(String user) {
         Toast.makeText(this, user, Toast.LENGTH_LONG).show();
+    }
+    private boolean fileExist(String[] archivos,String name){
+        for (int f = 0; f < archivos.length; f++)
+            if (name.equals(archivos[f]))
+                return true;
+        return false;
+    }
+    private float readTXT(){
+        float Num = 0;
+        try{
+            BufferedReader file = new BufferedReader(new InputStreamReader(openFileInput("delay.txt")));
+            String _aux = file.readLine();
+            file.close();
+            Num = Long.parseLong(_aux);
+           }catch(Exception ex){
+            ex.printStackTrace();
+            Num = 10;
+        }
+        return Num;
     }
 }
