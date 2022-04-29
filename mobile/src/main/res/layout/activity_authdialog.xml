@@ -1,105 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="350dp">
 
-    >
+    <Button
+        android:id="@+id/btnAuthDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="56dp"
+        android:text="@string/btnAuthDialog"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etUser"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tvUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:text="@string/tvUser"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etUser"
+        android:layout_width="323dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:ems="10"
+        android:hint="@string/etUser"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvUser"
+        android:height="300dp"/>
 
     <LinearLayout
-        android:id="@+id/main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp">
+        android:layout_width="375dp"
+        android:layout_height="55dp"
+        android:background="#ED0E0E"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/tvUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-        <LinearLayout
-            android:id="@+id/container"
+        <TextView
+            android:id="@+id/textView33"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:text="@string/errorLabel"
+            android:textAlignment="center"
+            android:textColor="#FBFBFB"
+            android:textColorHighlight="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-            <LinearLayout
-                android:id="@+id/logos"
-                android:layout_width="match_parent"
-                android:layout_height="64dp"
-                android:orientation="vertical"></LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/componentes"
-                android:layout_width="match_parent"
-                android:layout_height="323dp"
-                android:orientation="vertical">
-
-
-                <TextView
-                    android:id="@+id/tvUser"
-                    android:layout_width="match_parent"
-                    android:layout_height="37dp"
-                    android:text="Usuario"
-                    android:textColor="#000000"
-                    android:textSize="20dp" />
-
-                <EditText
-                    android:id="@+id/etUser"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Usuario"
-                    android:inputType="textPersonName"
-                    android:minHeight="48dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="86dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"></LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="155dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="23dp"
-                        android:orientation="vertical"></LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/boton"
-                        android:layout_width="match_parent"
-                        android:layout_height="54dp"
-                        android:orientation="vertical">
-
-                        <Button
-                            android:id="@+id/btnAuthDialog"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Añadir"
-                            tools:text="@string/btnAuthDialog" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"></LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"></LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-
+        <TextView
+            android:id="@+id/textView34"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/errorSublabel"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
     </LinearLayout>
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
