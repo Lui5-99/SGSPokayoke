@@ -11,7 +11,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="tvUser">Supervisor</string>
     <string name="etUser">Supervisor</string>
-    <string name="btnAuthDialog">Ingresar</string>
+    <string name="btnAuthDialog">Acceder</string>
     <string name="errorLabel">¡Error de versión incorrecta!</string>
     <string name="errorSublabel">Contacte al supervisor</string>
 </resources>
